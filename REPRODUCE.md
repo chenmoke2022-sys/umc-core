@@ -40,6 +40,10 @@ python .\tools\validate_artifacts.py --artifacts .\artifacts
 python .\tools\verify_manifest.py --manifest .\artifacts\manifest.json
 ```
 
+## 6. 测量口径（baseline）
+
+见 `MEASURE.md`（仅说明口径与边界；不附带权重/数据）。
+
 ## Optional: trace.json
 
 ```powershell

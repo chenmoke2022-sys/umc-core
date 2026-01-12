@@ -1,0 +1,22 @@
+{
+  "schema_version": "0.1",
+  "title": "UMC public manifest.json (minimal)",
+  "type": "object",
+  "required": ["schema_version", "files"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "files": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["path", "size_bytes", "sha256"],
+        "properties": {
+          "path": { "type": "string" },
+          "size_bytes": { "type": "number" },
+          "sha256": { "type": "string" }
+        }
+      }
+    }
+  }
+}
+

@@ -24,6 +24,12 @@ This repository is an **Engineering Evidence Pack** for a reproducible L8 baseli
 
 - `artifacts/manifest.json`：文件大小 + SHA256 清单
 
+结构化约束（用于快速审计/验收）：
+
+- `schemas/env.schema.json`
+- `schemas/results.schema.json`
+- `schemas/manifest.schema.json`
+
 ## 3. 完整性校验（Integrity Verification）
 
 校验方式：
@@ -37,6 +43,8 @@ python .\tools\verify_manifest.py --manifest .\artifacts\manifest.json
 ## 4. 复现口径（Reproduce）
 
 Reproduction instructions are in `REPRODUCE.md`. Results vary by hardware and load; consistency of method matters.
+
+Measurement notes (baseline): see `MEASURE.md`.
 
 ## 5. 脱敏边界（Redaction Boundary）
 
