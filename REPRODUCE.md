@@ -1,14 +1,11 @@
 # REPRODUCE — Reproducible Evidence Pack
 
-> 目标：让任何评审者照抄命令就能得到同口径工件（`env/results/report`）。  
-> 对外可信来源：只认 `artifacts/` 下的证据工件与完整性校验。
+Authoritative outputs are the artifacts under `artifacts/` plus the integrity manifest.
 
-## 0. 运行前检查
+## Requirements
 
-- 已安装 Python 3.10+（建议 3.11）
-- 已安装 PowerShell 7（命令为 `pwsh`）
-- 当前工作目录为**仓库根目录**（包含 `README.md / artifacts/ / tools/`）
-- **不要**在本目录放入任何权重文件、私有数据、私有参数表
+- Python 3.10+
+- PowerShell 7 (`pwsh`)
 
 ## 1. 生成环境工件（env.json）
 
@@ -43,9 +40,7 @@ python .\tools\validate_artifacts.py --artifacts .\artifacts
 python .\tools\verify_manifest.py --manifest .\artifacts\manifest.json
 ```
 
-## 5.1 可选：补充 trace.json（仅最小必要信息）
-
-如需记录性能/回滚/错误码的最小追踪信息，可以使用模板：
+## Optional: trace.json
 
 ```powershell
 copy .\templates\trace.json .\artifacts\trace.json
@@ -53,7 +48,7 @@ python .\tools\make_manifest.py --dir .\artifacts --out .\artifacts\manifest.jso
 python .\tools\verify_manifest.py --manifest .\artifacts\manifest.json
 ```
 
-## 6. 一键生成 demo artifacts（先把结构跑通）
+## Demo artifacts
 
 ```powershell
 pwsh .\scripts\make_demo_artifacts.ps1

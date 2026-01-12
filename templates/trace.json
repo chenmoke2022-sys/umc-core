@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "notes": "可选：仅记录必要的性能/回滚/错误码信息；不得包含任何路径与敏感信息",
+  "notes": "Optional. Store only minimal perf/rollback/error-code data. Do not include paths or sensitive markers.",
   "events": []
 }
 

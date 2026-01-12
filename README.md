@@ -35,19 +35,19 @@ UMC Core 提供了一套标准化的**工程证据包 (Evidence Pack)** 方案�
 
 ---
 
-## 🚀 快速复现 (Quick Start)
+## 🚀 Quick start
 
-你可以通过以下命令，一键生成并校验当前的工程证据包：
+Run:
 
 ```powershell
-# 1. 生成环境指纹与示例工件（用于演示与审计口径）
+# 1) Generate demo artifacts
 pwsh .\scripts\make_demo_artifacts.ps1
 
-# 2. 运行完整性审计
+# 2) Run audit gate
 pwsh .\scripts\audit_public.ps1
 ```
 
-输出结果将位于 `artifacts/` 目录中，包含一份人类可读的 `report.md`。
+Outputs are written to `artifacts/`.
 
 ## 📤 Export bundle (optional)
 
@@ -75,12 +75,11 @@ The generated `share_bundle/` contains `README/AUDIT/REPRODUCE/SECURITY + artifa
 
 ---
 
-## 🔒 使用范围 (Scope)
+## 🔒 Scope
 
-这是一个用于展示工程交付能力的仓库：聚焦“证据闭环 + 审计门禁 + 回滚策略”。  
-为保持材料可控，本仓库默认不接收外部贡献。
+This repository does not accept external contributions.
 
-> **注意**：本仓库严格脱敏，**请勿提交**任何模型权重、私有数据集或包含敏感路径的文件。
+No model weights or private datasets are included.
 
 ---
 

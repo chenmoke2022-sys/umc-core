@@ -1,16 +1,13 @@
-# 安全与漏洞响应（模板）
+# Security
 
-## 供应链与完整性
+## Supply chain and integrity
 
-- 我建议对发布物进行完整性校验（hash/manifest）。
-- 对外工件只包含可审计信息；不包含任何后门、暗门或惩罚性逻辑描述。
+- Verify integrity with `artifacts/manifest.json`.
+- Public artifacts are auditable. No backdoors or punitive logic are included.
 
-## 漏洞报告
+## Reporting
 
-请通过以下方式报告安全问题（择一）：
-
-- 如果平台支持：在仓库创建私密安全报告（Security Advisory）
-- 如果不支持：通过私信渠道联系我（不要在公开 issue 里贴敏感细节）
+Report via GitHub Security Advisories when available. Otherwise use a private channel.
 
 ## 披露窗口
 

@@ -1,8 +1,8 @@
-# 一页报告（Example）
+# One-page report
 
-> 这是一份示例报告，用于展示“证据包应该长什么样”。实际对外结论以 `artifacts/results.json` 与复现流程为准。
+All claims must be backed by `artifacts/results.json` and reproducible steps in `REPRODUCE.md`.
 
-## 结论（示例）
+## Summary
 
 - Cold start（p50/p95）已记录在 `metrics.load_time_ms_p50/p95`
 - 峰值内存与长跑稳定性已记录在 `metrics.peak_memory_mb` 与 `metrics.crash_count`
@@ -19,9 +19,9 @@
 
 见 `artifacts/results.json`。
 
-## 风险与回滚
+## Risk & rollback
 
-- 风险：不同硬件/系统负载会导致数值波动；请优先保证“口径一致”
-- 回滚策略：如证据不全或审计失败，撤回发布并回退到上一版本 tag
+- Risk: results vary by hardware and system load.
+- Rollback: revert to the previous release/tag if artifacts are incomplete or audit fails.
 
 

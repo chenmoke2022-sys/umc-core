@@ -1,10 +1,10 @@
 # 审计说明（AUDIT）
 
-这份 `AUDIT.md` 面向审计者/评审者：**本仓库对外承诺了什么、证据在哪里、如何验证证据没有被篡改。**
+This document defines what the repository claims, where the evidence lives, and how to verify integrity.
 
 ## 1. 对外声明范围（Claims Scope）
 
-本仓库是一个 **Engineering Evidence Pack（工程证据包）**，用于展示可复现的工程化证据闭环（L8 baseline）。
+This repository is an **Engineering Evidence Pack** for a reproducible L8 baseline.
 
 - **对外可审计的结论**：仅限 `artifacts/` 目录中的证据工件所覆盖的内容（见第 2 节）。
 - **不在对外声明范围**：
@@ -36,7 +36,7 @@ python .\tools\verify_manifest.py --manifest .\artifacts\manifest.json
 
 ## 4. 复现口径（Reproduce）
 
-复现口径见 `REPRODUCE.md`。注意：不同硬件与系统负载会造成波动，我强调**口径一致**而不是“数字完全一致”。
+Reproduction instructions are in `REPRODUCE.md`. Results vary by hardware and load; consistency of method matters.
 
 ## 5. 脱敏边界（Redaction Boundary）
 
@@ -46,6 +46,6 @@ python .\tools\verify_manifest.py --manifest .\artifacts\manifest.json
 - 私有训练/校准数据
 - 内部路径、账号、密钥等敏感信息
 
-如发现任何可能的敏感泄露，请优先反馈并暂停发布。
+If you believe something sensitive is present, stop distribution and report it.
 
 
