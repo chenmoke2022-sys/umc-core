@@ -1,6 +1,6 @@
 # UMC 格式规范（v0.1｜对外草案）
 
-> 范围：我只对外讨论公开墙内（L8 基线及其证据闭环），更高档位不在本规范范围。
+> Scope: this spec covers the minimal, reproducible L8 baseline evidence pack format only.
 
 ## 1. 设计目标
 

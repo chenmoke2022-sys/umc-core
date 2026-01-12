@@ -29,7 +29,7 @@ def main() -> int:
             "machine": platform.machine(),
             "processor": platform.processor(),
         },
-        "notes": "仅包含最小必要环境信息；不得包含任何本地路径/用户名/旧项目命名。",
+        "notes": "Minimal environment info only. Do not include any local paths, usernames, or sensitive markers.",
     }
 
     out.write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

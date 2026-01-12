@@ -1,6 +1,6 @@
-# REPRODUCE — 一键复现与证据工件（纯净版）
+# REPRODUCE — Reproducible Evidence Pack
 
-> 目标：让任何面试官/同事照抄命令就能得到同口径工件（`env/results/report`），避免口号化。  
+> 目标：让任何评审者照抄命令就能得到同口径工件（`env/results/report`）。  
 > 对外可信来源：只认 `artifacts/` 下的证据工件与完整性校验。
 
 ## 0. 运行前检查
@@ -53,7 +53,7 @@ python .\tools\make_manifest.py --dir .\artifacts --out .\artifacts\manifest.jso
 python .\tools\verify_manifest.py --manifest .\artifacts\manifest.json
 ```
 
-## 6. 一键生成“占位闭环”（先把结构跑通）
+## 6. 一键生成 demo artifacts（先把结构跑通）
 
 ```powershell
 pwsh .\scripts\make_demo_artifacts.ps1
