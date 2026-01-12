@@ -49,6 +49,16 @@ pwsh .\scripts\audit_public.ps1
 
 输出结果将位于 `artifacts/` 目录中，包含一份人类可读的 `report.md`。
 
+## 📤 分享给面试官/HR（最小集合）
+
+- 直接给仓库链接；或在仓库根目录执行：
+
+```powershell
+pwsh .\scripts\make_share_bundle.ps1
+```
+
+生成的 `share_bundle/` 只包含 `README/AUDIT/REPRODUCE/SECURITY + artifacts`，不包含任何权重/私有数据。
+
 ---
 
 ## ⚖️ 对外口径 (Public Statement)

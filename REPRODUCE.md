@@ -6,7 +6,8 @@
 ## 0. 运行前检查
 
 - 已安装 Python 3.10+（建议 3.11）
-- 当前目录为 `SW_PUBLIC/`
+- 已安装 PowerShell 7（命令为 `pwsh`）
+- 当前工作目录为**仓库根目录**（包含 `README.md / artifacts/ / tools/`）
 - **不要**在本目录放入任何权重文件、私有数据、私有参数表
 
 ## 1. 生成环境工件（env.json）
@@ -20,13 +21,13 @@ python .\tools\collect_env.py --out .\artifacts\env.json
 将模板复制到 `artifacts/` 后填写：
 
 ```powershell
-copy .\templates\results.json .\artifacts\results.json
+Copy-Item .\templates\results.json .\artifacts\results.json -Force
 ```
 
 ## 3. 准备一页报告（report.md）
 
 ```powershell
-copy .\templates\report.md .\artifacts\report.md
+Copy-Item .\templates\report.md .\artifacts\report.md -Force
 ```
 
 ## 4. 生成完整性清单（manifest.json）
