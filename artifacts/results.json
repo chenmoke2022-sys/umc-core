@@ -1,25 +1,23 @@
 {
   "schema_version": "0.1",
-  "data_status": "example",
+  "data_status": "baseline_measured",
   "baseline": {
-    "name": "Llama-3-8B-Instruct",
-    "version": "GGUF-Q4_K_M",
-    "quant_profile": "L8 (Example)",
+    "name": "GGUF",
+    "version": "Q2_K",
+    "quant_profile": "Q2_K (baseline)",
     "backend": "llama.cpp"
   },
   "device": {
-    "os": "Linux / Android",
-    "cpu": "Snapdragon 8 Gen 3 (Reference)",
-    "ram_gb": "16GB"
+    "os": "Windows 10.0.19045",
+    "cpu": "Intel64 Family 6 Model 151 Stepping 2, GenuineIntel",
+    "ram_gb": "31.8"
   },
   "metrics": {
-    "load_time_ms_p50": 1250.5,
-    "load_time_ms_p95": 1450.0,
-    "throughput_tokens_per_s_p50": 18.5,
-    "throughput_tokens_per_s_p95": 15.2,
-    "peak_memory_mb": 4500.0,
-    "long_run_minutes": 60.0,
+    "load_time_ms_p50": 567.2,
+    "load_time_ms_p95": 694.8,
+    "peak_memory_mb": 378.0,
+    "long_run_minutes": 30.0,
     "crash_count": 0
   },
-  "notes": "This is example data. Run scripts/make_demo_artifacts.ps1 to regenerate with local values."
+  "notes": "Baseline measured with llama.cpp-bench-cpu. Candidate UMC L8 metrics are intentionally not claimed here unless measured and added under the same methodology."
 }

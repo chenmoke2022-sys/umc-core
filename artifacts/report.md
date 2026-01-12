@@ -1,27 +1,31 @@
-# One-page report
+# One-page report (baseline_measured)
 
-All claims must be backed by `artifacts/results.json` and reproducible steps in `REPRODUCE.md`.
+This repository is an **engineering evidence pack**. Claims are backed by `artifacts/results.json` and reproducible steps in `REPRODUCE.md`.
 
 ## Summary
 
-- Cold start（p50/p95）已记录在 `metrics.load_time_ms_p50/p95`
-- 峰值内存与长跑稳定性已记录在 `metrics.peak_memory_mb` 与 `metrics.crash_count`
+- This public pack currently publishes **baseline-measured** numbers (GGUF / llama.cpp / Q2_K) under a fixed methodology.
+- Candidate (UMC L8) numbers are **not** claimed unless measured and recorded under the same methodology.
 
-## 复现方式
+## Baseline (measured)
 
-见 `REPRODUCE.md`。
+- Baseline: **GGUF / llama.cpp / Q2_K**
+- Cold start (p50/p95): **567.2ms / 694.8ms**
+- Peak RSS: **378.0MB**
+- Stability: **30 minutes, crash_count = 0**
 
-## 环境摘要
+## How to reproduce
 
-见 `artifacts/env.json`。
+See `REPRODUCE.md`. Evidence artifacts:
 
-## 指标摘要
-
-见 `artifacts/results.json`。
+- `artifacts/env.json`
+- `artifacts/results.json`
+- `artifacts/report.md`
+- `artifacts/manifest.json` (integrity)
 
 ## Risk & rollback
 
-- Risk: results vary by hardware and system load.
-- Rollback: revert to the previous release/tag if artifacts are incomplete or audit fails.
+- Results vary by hardware and system load; the goal is **methodology consistency**, not identical numbers.
+- If artifacts are incomplete or audit fails, revert to the previous release/tag and regenerate artifacts + manifest.
 
 

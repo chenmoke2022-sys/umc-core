@@ -2,24 +2,19 @@
   "schema_version": "0.1",
   "files": [
     {
-      "path": ".keep",
-      "size_bytes": 17,
-      "sha256": "4f5fe7ea80fd4846bdb60277720f7e28ceafb4d208b72a9faf53a502f1f5658c"
-    },
-    {
       "path": "env.json",
       "size_bytes": 417,
       "sha256": "c9c5437828c1031ddc56e4bd39715e8ce5bec616afd8e38722efb3c7baa15877"
     },
     {
       "path": "report.md",
-      "size_bytes": 620,
-      "sha256": "1e7b3d0d112bd5ff881ecf4e9f8c65499392c1423c498f7722f41e1603ebc86b"
+      "size_bytes": 1058,
+      "sha256": "53d1a5b61c38525bc3341a8a85127b547cf3a77d7871c0dd6d4b7ce597f1c62c"
     },
     {
       "path": "results.json",
-      "size_bytes": 699,
-      "sha256": "8a8cd6b26ab12f1c1ee43f4e62b43b60731a17500ff9aefb2d81ccd7838cea8a"
+      "size_bytes": 694,
+      "sha256": "45341be3c8e3b6ed0a6cb52e04d5c0274f1ba4e1c0acca4eb2d23bf6c4cb309c"
     }
   ]
 }
