@@ -31,7 +31,7 @@ UMC Core 提供了一套标准化的**工程证据包 (Evidence Pack)** 方案�
 | **Evidence** | 核心证据工件（环境/指标/报告/校验） | `artifacts/` |
 | **Specs** | 容器与格式规范草案 | `spec/SPEC_UMC_FORMAT.md` |
 | **Tools** | 自动化采集与审计脚本 | `tools/` |
-| **Policy** | 发布门禁与合规策略 | `docs/RELEASE_CHECKLIST.md` |
+| **Policy** | 发布门禁与合规策略（已合并到 README/AUDIT） | `AUDIT.md` |
 
 ---
 
