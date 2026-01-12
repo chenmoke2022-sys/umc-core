@@ -7,6 +7,8 @@
 
 > **Universal Model Container (UMC)** is an engineering standard for reproducible, auditable, and rollback-ready edge inference artifacts.
 
+![UMC Overview](assets/architecture_overview.png)
+
 ---
 
 ## 🎯 核心目标 (Mission)
