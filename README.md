@@ -49,15 +49,15 @@ pwsh .\scripts\audit_public.ps1
 
 输出结果将位于 `artifacts/` 目录中，包含一份人类可读的 `report.md`。
 
-## 📤 分享给评审者/招聘方（最小集合）
+## 📤 Export bundle (optional)
 
-- 直接给仓库链接；或在仓库根目录执行：
+To package a minimal evidence bundle, run:
 
 ```powershell
 pwsh .\scripts\make_share_bundle.ps1
 ```
 
-生成的 `share_bundle/` 只包含 `README/AUDIT/REPRODUCE/SECURITY + artifacts`，不包含任何权重/私有数据。
+The generated `share_bundle/` contains `README/AUDIT/REPRODUCE/SECURITY + artifacts` only (no weights / private data).
 
 ---
 
