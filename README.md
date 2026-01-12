@@ -1,0 +1,79 @@
+# UMC Core (Universal Model Container)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![Platform](https://img.shields.io/badge/Platform-Linux%20%7C%20Windows-lightgrey)]()
+[![Status](https://img.shields.io/badge/Status-Public%20Baseline-green)]()
+
+> **Universal Model Container (UMC)** is an engineering standard for reproducible, auditable, and rollback-ready edge inference artifacts.
+
+---
+
+## 🎯 核心目标 (Mission)
+
+我构建这个项目的初衷，是为了解决端侧模型部署中的**“最后一公里信任问题”**：
+如何证明一个量化后的模型在低资源设备上既快又稳，且不仅是口头承诺？
+
+UMC Core 提供了一套标准化的**工程证据包 (Evidence Pack)** 方案：
+
+*   ✅ **可复现 (Reproducible)**：通过标准化的 `REPRODUCE.md` 流程，任何人都能跑出一致的指标。
+*   ✅ **可审计 (Auditable)**：所有结论绑定 `manifest.json` 完整性校验，拒绝“黑箱”。
+*   ✅ **生产就绪 (Production-Ready)**：内置回滚策略与长跑稳定性门禁（Stability Gates）。
+
+---
+
+## 📦 包含内容 (What's Inside)
+
+本仓库展示了 **L8 (8-bit)** 基线版本的工程化闭环：
+
+| 模块 | 说明 | 关键文件 |
+| :--- | :--- | :--- |
+| **Evidence** | 核心证据工件（环境/指标/报告/校验） | `artifacts/` |
+| **Specs** | 容器与格式规范草案 | `spec/SPEC_UMC_FORMAT.md` |
+| **Tools** | 自动化采集与审计脚本 | `tools/` |
+| **Policy** | 发布门禁与合规策略 | `docs/RELEASE_CHECKLIST.md` |
+
+---
+
+## 🚀 快速复现 (Quick Start)
+
+你可以通过以下命令，一键生成并校验当前的工程证据包：
+
+```powershell
+# 1. 生成环境指纹与示例工件（用于演示与审计口径）
+pwsh .\scripts\make_demo_artifacts.ps1
+
+# 2. 运行完整性审计
+pwsh .\scripts\audit_public.ps1
+```
+
+输出结果将位于 `artifacts/` 目录中，包含一份人类可读的 `report.md`。
+
+---
+
+## ⚖️ 对外口径 (Public Statement)
+
+*   **证据优先**：我只对外陈述 `artifacts/` 证据工件覆盖到的结论（env/results/report/manifest）。
+*   **不画饼**：我不对外承诺未来倍率路线；不做任何“暗示隐藏上限”的叙事。
+*   **风险控制**：对未知风险包采用安全默认配置；需要时以 conformance 与可复现证据进入已验证档。
+
+---
+
+## 🔮 路线图与边界 (Roadmap & Scope)
+
+UMC Core 的公开侧只维护 L8 基线的完整证据闭环与门禁制度。
+
+- **公开侧**：我只发布 L8 的完整证据闭环（能复现、能审计、能回滚）。
+- **更高档位**：我可能在受控环境做过内部原型探索，但这不构成对外承诺；对外仍以证据工件为准。
+
+---
+
+## 🤝 贡献 (Contributing)
+
+欢迎提交 PR 完善工具链或文档。请务必阅读 [CONTRIBUTING.md](CONTRIBUTING.md) 并签署 DCO。
+
+> **注意**：本仓库严格脱敏，**请勿提交**任何模型权重、私有数据集或包含敏感路径的文件。
+
+---
+
+License: [MIT](LICENSE)

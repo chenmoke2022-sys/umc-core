@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.1",
+  "timestamp_utc": "2026-01-12T13:20:25.8234101Z",
+  "checks": [
+    {
+      "name": "audit_public",
+      "ok": true,
+      "details": "audit_public.ps1 passed"
+    },
+    {
+      "name": "required_docs",
+      "ok": true,
+      "details": "all required docs present"
+    }
+  ],
+  "passed": true
+}

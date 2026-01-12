@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "data_status": "example",
+  "baseline": {
+    "name": "Llama-3-8B-Instruct",
+    "version": "GGUF-Q4_K_M",
+    "quant_profile": "L8 (Example)",
+    "backend": "llama.cpp"
+  },
+  "device": {
+    "os": "Linux / Android",
+    "cpu": "Snapdragon 8 Gen 3 (Reference)",
+    "ram_gb": "16GB"
+  },
+  "metrics": {
+    "load_time_ms_p50": 1250.5,
+    "load_time_ms_p95": 1450.0,
+    "throughput_tokens_per_s_p50": 18.5,
+    "throughput_tokens_per_s_p95": 15.2,
+    "peak_memory_mb": 4500.0,
+    "long_run_minutes": 60.0,
+    "crash_count": 0
+  },
+  "notes": "This is example data. Run scripts/make_demo_artifacts.ps1 to regenerate with local values."
+}
