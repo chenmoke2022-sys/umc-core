@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+authors:
+- family-names: "Chen"
+  given-names: "Ming"
+title: "UMC: A Reproducible, Auditable, and Rollback-Ready Evidence Pack for Edge LLM Deployment"
+version: 1.0.0
+date-released: 2026-01-14
+url: "https://github.com/chenmoke2022-sys/umc-core"
