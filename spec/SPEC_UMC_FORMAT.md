@@ -41,4 +41,4 @@ A valid UMC package consists of the following artifacts (virtual or physical):
 ## 4. 版本策略（最小）
 
 - **Major（0.x -> 1.x）**：`manifest.json` 结构发生不兼容变化。
-- **Minor（0.1 -> 0.2）**：`results.json` 增加可选字段（保持向后兼容）。
+- **Minor（0.1 -> 0.2）**：`results.json` 增加可选字段，保持向后兼容。

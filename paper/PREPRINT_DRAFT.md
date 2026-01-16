@@ -9,39 +9,45 @@
 
 ## Abstract
 
-Edge and consumer deployments of large language models (LLMs) confront the “last-mile trust problem”: quantization and packaging decisions are often opaque, results are hard to reproduce across heterogeneous environments, and rollbacks are handled informally. I present **UMC (Universal Model Container)** as an engineering evidence standard: a minimal, structured **Evidence Pack** consisting of `env.json`, `results.json`, `report.md`, and an integrity `manifest.json`, plus a release gate that validates completeness and forbids sensitive leakage. I designed UMC to be **reproducible**, **auditable**, and **rollback-ready**. I am releasing an open, baseline-measured public pack and a toolchain that regenerates artifacts and enforces audit gates. My goal is not to claim unverified performance improvements, but to standardize the *verification surface* so that future candidate artifacts can be evaluated under a consistent methodology.
+Edge deployments of large language models (LLMs) frequently fail for non-model reasons: **metrics are hard to reproduce**, deliverables lack provenance, and regressions are discovered late. This preprint presents **UMC (Universal Model Container)** as an exploratory, evidence-first standard for edge inference delivery. UMC defines a minimal **Evidence Pack** (`env.json`, `results.json`, `report.md`, plus an integrity `manifest.json`) and a release gate that validates completeness and hygiene. I release a **baseline-measured public pack** and a toolchain that regenerates artifacts and enforces audit gates, aiming to standardize the *verification surface* for quantized edge deployments.
 
 ---
 
 ## 1. Introduction
 
 ### 1.1 Motivation
-Deploying LLMs on edge devices (phones/IoT/embedded) requires aggressive packaging and optimization under strict constraints: memory budgets, cold-start latency, stability gates, and operational rollbacks. Based on my engineering experience, edge deployment often fails because:
+Deploying LLMs on edge devices (phones/IoT/embedded) requires aggressive packaging and optimization under strict constraints: memory budgets, cold-start latency, stability gates, and operational rollbacks. Based on common engineering challenges, edge deployment often faces issues such as:
 
 - **Non-reproducible results**: performance depends on hardware, backend versions, parameters, and system load.
-- **Opaque artifacts**: “optimized model” deliverables may not include sufficient evidence for internal review.
-- **Weak auditability**: lack of integrity checks makes it hard to verify that “the evaluated artifact” equals “the shipped artifact.”
-- **Rollback friction**: regressions are discovered late, with incomplete provenance.
+- **Verification gaps**: “optimized model” deliverables may benefit from more standardized evidence for peer review and acceptance.
+- **Auditability needs**: standardized integrity checks can help verify that “the evaluated artifact” equals “the shipped artifact.”
+- **Rollback friction**: regressions are sometimes discovered late, with incomplete provenance.
 
 ### 1.2 Key idea
-I designed UMC to treat an edge inference deliverable as an **auditable evidence bundle**. The bundle is the unit of trust: measurable claims must be backed by artifacts and reproducible steps, and releases are subject to audit gates.
+I designed UMC to treat an edge inference deliverable as an **auditable evidence bundle**. The bundle is the unit of delivery: measurable claims should be backed by artifacts and reproducible steps, and releases are subject to audit gates.
 
 ### 1.3 Contributions
 - **Evidence Pack format**: a minimal set of artifacts (`env/results/report/manifest`) that captures methodology, environment fingerprint, and integrity.
-- **Audit gate**: automated checks that validate artifact completeness and block common leakage patterns.
+- **Audit gate**: automated checks that validate artifact completeness.
 - **Public baseline pack**: a baseline-measured reference release that demonstrates reproducibility and auditability without forward-looking claims.
+
+### 1.4 Reproduction and evidence pointers (public)
+- **Evidence artifacts**: `SW_PUBLIC/artifacts/` (`env.json`, `results.json`, `report.md`, `manifest.json`)
+- **Reproduction instructions**: `SW_PUBLIC/REPRODUCE.md`
+- **Audit gate entrypoint**: `SW_PUBLIC/scripts/audit_public.ps1`
+- **Measurement notes**: `SW_PUBLIC/MEASURE.md`
 
 ---
 
-## 2. Problem Statement: the Last-Mile Trust Gap
+## 2. Problem Statement: The Engineering Verification Challenge
 
-I formalize the trust gap as the mismatch between:
+I formalize the challenge as the need to align:
 
 - What stakeholders need to approve deployment (reproducible metrics, known methodology, integrity, rollback plan), and
-- What they often receive (a binary/model file with limited provenance).
+- The varying formats of current deliverables (often binary/model files with limited provenance).
 
 ### 2.1 Threat model (engineering-focused)
-UMC does not aim to defend against a fully malicious actor with system-level access. Instead, it targets common operational risks:
+UMC targets common operational risks in a constructive way:
 
 - Accidental mixing of versions (backend commit changes, parameter drift)
 - Artifact incompleteness (missing env or methodology)
@@ -60,7 +66,7 @@ I define an Evidence Pack with:
 - `report.md`: a one-page human-readable summary, reproduction steps, and risk/rollback notes
 - `manifest.json`: integrity manifest (SHA-256 of artifacts)
 
-This pack is intentionally small so it can be produced repeatedly and shared internally.
+This pack is intentionally small so it can be produced repeatedly and shared as part of routine engineering review.
 
 ### 3.2 Design principles
 - **Evidence-first**: claims are limited to what artifacts cover.
@@ -93,6 +99,11 @@ The audit gate scans for:
 
 ---
 
+## 4.2 Non-claims (public boundary)
+UMC is explicitly **not** a claim about model quality or “lossless” compression. Public claims are limited to what is backed by the evidence artifacts under `SW_PUBLIC/artifacts/`. Candidate improvements are not published unless measured under the same methodology and included as artifacts.
+
+---
+
 ## 5. Evaluation
 
 ### 5.1 What I evaluate
@@ -111,7 +122,7 @@ This repository publishes a **baseline-measured** pack (GGUF / llama.cpp / Q2_K)
 
 All numbers are sourced from `SW_PUBLIC/artifacts/results.json` and summarized in `SW_PUBLIC/artifacts/report.md`.
 
-> **Important**: Candidate improvements (e.g., UMC L8/L16) are intentionally not claimed unless measured under the same methodology and included as artifacts.
+> **Important**: Candidate improvements (e.g., beyond the published baseline) are intentionally not claimed unless measured under the same methodology and included as artifacts.
 
 ### 5.3 Limitations of current public evaluation
 - Single baseline configuration (extend to multiple backends and hardware tiers)
@@ -134,11 +145,11 @@ This section is exploratory and makes no performance claims; it motivates why an
 
 ## 7. Related Work
 
-(Placeholder — to be expanded)
+This draft builds on established ideas across:
 
-- quantization formats and inference backends (GGUF, llama.cpp)
-- reproducibility and ML systems measurement
-- software supply chain integrity (SBOM, checksums)
+- quantization formats and inference backends (e.g., GGUF, llama.cpp)
+- reproducibility and ML systems measurement practices (consistent methodology, variance-aware reporting)
+- software supply chain integrity concepts (checksums, manifests, SBOM-like thinking)
 
 ---
 

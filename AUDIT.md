@@ -54,6 +54,6 @@ Measurement notes (baseline): see `MEASURE.md`.
 - 私有训练/校准数据
 - 内部路径、账号、密钥等敏感信息
 
-If you believe something sensitive is present, stop distribution and report it.
+If sensitive material is found, stop distribution and report it.
 
 

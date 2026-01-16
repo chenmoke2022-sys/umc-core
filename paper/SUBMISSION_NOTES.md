@@ -1,11 +1,11 @@
-# Preprint submission notes (internal)
+# Preprint submission notes
 
 ## Target venues (recommended order)
 - arXiv (immediate)
 - NeurIPS/ICLR workshops (Systems/Efficient Foundation Models)
-- MLSys (best fit if you expand evaluation across devices/backends)
+- MLSys (best fit if evaluation is expanded across devices/backends)
 
-## What NOT to claim in public (until you have evidence artifacts)
+## What NOT to claim in public (until evidence artifacts exist)
 - L16/L32/L64 performance wins
 - "lossless" quality statements
 - forward-looking roadmap promises
@@ -15,4 +15,5 @@
 - Add at least one additional backend configuration
 - Add one real-world scenario beyond microbench (e.g., TTFT, sustained throughput)
 - Provide an artifact diff/rollback demonstration
+
 
