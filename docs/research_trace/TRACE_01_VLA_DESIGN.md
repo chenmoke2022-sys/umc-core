@@ -1,50 +1,53 @@
-# Trace: VLA Toy Experiment Design (AI-Assisted Thinking)
+# Trace: VLA Toy 实验设计工程决策记录
 
-> **Context**: This document records the **decision-making process** behind the `vla_alignment_toy` example. It demonstrates how I used AI to decompose a complex research topic (VLA/Multimodal) into a verifiable engineering task.
+> **背景**：本文档记录了 `vla_alignment_toy` 示例背后的工程决策过程，展示了如何将复杂的研究主题（VLA/多模态对齐）分解为可验证的工程任务。
 
-## 1. Problem Decomposition (Tasking)
+## 1. 问题分解与技术选型
 
-**Goal**: Demonstrate "Multimodal Alignment" capability without training a massive model (too expensive/slow for a demo).
+**目标**：在不训练大型模型的前提下验证多模态对齐能力（避免GPU依赖与复杂环境配置）。
 
-**AI Trace / Reasoning**:
-*   *Initial thought*: Fine-tune a LLaVA model? -> *Risk*: Requires GPU, large weights, complex env. Hard to reproduce in CI.
-*   *Alternative*: Use pre-trained CLIP? -> *Risk*: Good for application, but doesn't prove "training/alignment" capability.
-*   *Decision*: **Synthetic Toy**. Generate paired vectors (v, t) from a shared latent space. Train a projection head to recover the alignment.
-    *   **Pro**: Runs on CPU. Zero weights. Pure code.
-    *   **Con**: Not real data.
-    *   **Mitigation**: Explicitly label it as a "Toy" for verifying the *training loop* and *ablation workflow*, not the model performance.
+**工程决策过程**：
+1. **选项评估**：
+   - **方案A：微调LLaVA模型** → **风险**：依赖GPU、大权重文件、复杂环境配置，难以在CI中复现
+   - **方案B：使用预训练CLIP模型** → **风险**：适用于应用验证，但无法证明"训练/对齐"能力
+   - **方案C：合成玩具数据集** → **优势**：可在CPU运行、零权重依赖、纯代码实现
 
-## 2. Experiment Design (Ablation)
+2. **最终决策**：
+   - 选择**合成玩具数据**方案：生成共享隐空间中的配对向量(v, t)，训练投影头恢复对齐关系
+   - **权衡说明**：非真实数据，但明确标注为"Toy"示例，用于验证训练流程与消融实验框架，而非模型性能
 
-**Goal**: Show ability to compare model architectures (Engineering/Research rigor).
+## 2. 实验设计与消融验证
 
-**AI Trace / Reasoning**:
-*   *Question*: What is the simplest structural change to test?
-*   *Hypothesis*: A non-linear head (MLP) should align better than a linear head if the latent relationship is simple but noisy.
-*   *Plan*:
-    1.  **Baseline**: `LinearHead` (d_in -> d_proj).
-    2.  **Candidate**: `MLPHead` (d_in -> hidden -> d_proj).
-    3.  **Metric**: `retrieval@1` (Can we find the correct text pair for a given image in a batch?).
+**目标**：展示模型架构对比能力（体现工程与研究严谨性）。
 
-## 3. Metric Definition (Standardization)
+**实验设计逻辑**：
+1. **核心问题**：验证最简单结构变化带来的性能差异
+2. **技术假设**：若隐空间关系简单但有噪声，非线性头（MLP）应比线性头具有更好的对齐能力
+3. **实现方案**：
+   - **基线模型**：`LinearHead` (d_in → d_proj)
+   - **对比模型**：`MLPHead` (d_in → hidden → d_proj)
+   - **评估指标**：`retrieval@1`（批内检索正确率）
 
-**Goal**: Fix the evaluation surface so results are comparable.
+## 3. 指标标准化与输出定义
 
-**AI Trace / Reasoning**:
-*   *Loss*: InfoNCE (Standard Contrastive Loss). Hard to interpret intuitively.
-*   *Business Metric*: "Accuracy" of matching.
-*   *Implementation*: In-batch retrieval. For batch size $N$, for each $v_i$, is $t_i$ the closest vector?
-*   *Output Schema*: Need to log `loss_start`, `loss_end`, `at1_start`, `at1_end` for both heads.
+**目标**：建立可比较的评估基准，确保结果一致性。
 
-## 4. Artifact Definition (Evidence)
+**指标设计考虑**：
+- **损失函数**：InfoNCE（标准对比损失），提供梯度信号但直观解释性有限
+- **业务指标**："匹配准确率"作为可理解的评估标准
+- **实现方案**：批内检索，对于批次大小$N$，检查每个$v_i$是否与对应的$t_i$最接近
+- **输出架构**：记录`loss_start`、`loss_end`、`at1_start`、`at1_end`等关键指标，支持两种头的对比分析
 
-**Goal**: What proves this ran successfully?
+## 4. 证据包定义与验证要求
 
-*   `env.json`: Prove it ran on local hardware (CPU).
-*   `results.json`: The standard schema with numeric fields for both Linear and MLP metrics.
-*   `report.md`: Auto-generated summary table (Markdown).
+**目标**：定义可验证实验成功执行的工程证据。
+
+**证据包构成**：
+- **环境指纹**：`env.json`，记录硬件环境与软件依赖（CPU配置等）
+- **结构化结果**：`results.json`，遵循标准架构存储线性头与MLP头的量化指标
+- **技术报告**：`report.md`，自动生成的Markdown格式总结表格
 
 ---
 
-**Outcome**: The `examples/vla_alignment_toy` code was generated based on this blueprint.
+**交付产出**：基于此设计蓝图开发的 `examples/vla_alignment_toy` 示例代码。
 

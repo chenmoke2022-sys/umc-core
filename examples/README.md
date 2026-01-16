@@ -17,6 +17,9 @@
 ### 2. 性能工程与基准 (Performance Engineering)
 *   **`inference_profiling/` (性能分析)**：演示“Profiling → 优化改动 → 复测 → 回归门禁”的标准优化工作流模板。
 *   **`feature_compression_toy/` (特征压缩)**：定义 Rate/Distortion 评测口径，并进行带宽约束下的健全性检查（Sanity Check）。
+*   **`system_perf_microbench/` (系统微基准)**：C++/Python 微基准：多线程内存拷贝带宽测量 → 结果落盘 → 证据包输出，用于支撑“系统级瓶颈定位与调优”能力展示。
+*   **`vllm_sglang_enablement_skeleton/` (框架使能模板)**：使能交付模板：拓扑摘要采集 + 证据包结构 + 回归门禁框架（不含权重/私有数据）。
+*   **`triton_op_microbench/` (算子 microbench)**：Triton kernel microbench：可选 CUDA 环境下测量带宽/吞吐；缺失条件时输出 skipped 证据包。
 
 ### 3. 系统与架构 (Systems & Architecture)
 *   **`mlops_pipeline_toy/` (MLOps)**：展示从“数据质量门禁 → 训练 → 模型注册 → 证据打包”的自动化流水线（附 Airflow DAG 模板）。

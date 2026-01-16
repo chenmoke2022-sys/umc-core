@@ -35,6 +35,20 @@ pwsh .\scripts\bench_llamacpp_cpu.ps1 `
 pwsh .\scripts\apply_bench_to_results.ps1 -BenchJson "$env:TEMP\sw_public_bench.json"
 ```
 
+### 3.1 示例：DeepSeek（蒸馏到 Qwen 的 7B，GGUF）
+
+同口径可替换为公开可下载的 DeepSeek-R1-Distill-Qwen-7B GGUF（仅示例，不随仓库分发权重）：
+
+```powershell
+pwsh .\scripts\download_llamacpp_windows.ps1
+pwsh .\scripts\download_hf_gguf.ps1 -RepoId "mradermacher/DeepSeek-R1-Distill-Qwen-7B-GGUF" -Pattern "Q4_K_M"
+pwsh .\scripts\bench_llamacpp_cpu.ps1 `
+    -LlamaBench "<path-to-llama-bench.exe>" `
+    -ModelGguf "<path-to-*.gguf>" `
+    -OutJson "$env:TEMP\sw_public_bench.json"
+pwsh .\scripts\apply_bench_to_results.ps1 -BenchJson "$env:TEMP\sw_public_bench.json"
+```
+
 ## 4. 如何更新实测结果
 
 当你在新环境或使用新参数重新测量后：

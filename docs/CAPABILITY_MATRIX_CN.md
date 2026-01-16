@@ -1,21 +1,21 @@
-# UMC Core 技术实现：边缘AI的模型优化工程实践
+# UMC Core 能力矩阵（可复现证据导向）
 
-本项目专注于边缘设备上大语言模型部署的工程验证框架，通过标准化的工作流和可复现的证据包，解决边缘AI部署中的关键技术挑战。
+本项目聚焦于**端侧/边缘推理交付的工程验证框架**：用标准化工作流与可复现证据包（Evidence Pack）把“性能与稳定性结论”固化为可审计交付物。
 
-## 项目设计原则
+## 设计原则（对外口径）
 
-UMC Core 基于以下工程原则构建：
+UMC Core 基于以下原则构建：
 1. **证据驱动的质量门禁**：所有技术声明必须有可验证的证据包支持
 2. **最小化可复现单元**：通过精简的环境指纹和结构化结果，确保实验的可重复性
 3. **完整性保障**：SHA256哈希链确保交付物从评估到部署的完整性和一致性
-4. **工程化评估**：将复杂的性能评估转化为自动化流水线，减少人为误差
+4. **工程化评估**：把测量口径与复测流程脚本化，减少人为误差
 
 ## 技术实现模块
 
 ### 量化（Quantization）
-- **技术实现**：基于llama.cpp框架的int4量化流水线，包含权重范围分析、对称量化、校准数据选择和后训练量化
-- **工程考量**：量化策略选择（int4 vs int8）考虑内存占用、计算加速和精度保持的平衡
-- **性能验证**：在边缘设备上验证量化模型的推理加速效果，同时监控精度损失
+- **技术实现**：基于 `llama.cpp` 的 GGUF 路线示例与测量口径（以公开 baseline 为准）
+- **工程考量**：量化配置对速度/内存/稳定性的影响与回归门禁（以证据包为准，不做不可验证承诺）
+- **性能验证**：复现流程与指标采集见示例与 `MEASURE.md`
 - **文档入口**：[量化实现详解](examples/quantization_llamacpp/README.md)
 - **证据包位置**：`examples/quantization_llamacpp/artifacts/`（包含环境配置、性能指标、技术报告和完整性校验）
 
@@ -36,9 +36,17 @@ UMC Core 基于以下工程原则构建：
 ### 推理性能优化（Inference Performance Engineering）
 - **技术实现**：完整的性能剖析-优化-验证工作流：profiling → 代码改动 → 回归测试 → 门禁检查 → 回滚机制
 - **工程考量**：性能回归的早期检测和预防，建立性能基准和容差范围
-- **工具链**：集成硬件性能计数器和软件profiling工具，实现端到端性能分析
+- **工具链**：以可复现实验与日志模板为中心，支持将 Profiling 结论固化为可审计记录（不绑定任何私有工具/私有算法）
 - **文档入口**：[推理优化方法论](examples/inference_profiling/README.md)
 - **证据包位置**：`examples/inference_profiling/artifacts/`
+
+### 异构计算与系统级性能分析（Heterogeneous Compute & System Performance）
+- **能力范围**：围绕“硬件拓扑 → 性能分析 → 瓶颈定位 → 软硬协同优化 → 复测回归”的工程闭环组织材料
+- **可交付物**：调优检查清单、场景化瓶颈定位模板、可复现微基准（C++/Python）
+- **文档入口**：[异构计算与推理优化实战手册](docs/HETEROGENEOUS_COMPUTE_PLAYBOOK_CN.md)
+- **示例入口**：[系统性能微基准（C++/Python）](examples/system_perf_microbench/README.md)
+- **框架使能入口**：[vLLM/sglang 新硬件使能与优化交付模板](docs/VLLM_SGLANG_ENABLEMENT_CN.md)
+- **算子 microbench**：[Triton 算子 microbench（公开）](examples/triton_op_microbench/README.md)
 
 ### 多模态对齐（Multimodal Alignment）
 - **技术实现**：基于CLIP架构的视觉-语言对齐框架，实现对比学习和特征空间映射
