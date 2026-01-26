@@ -1,0 +1,7 @@
+{
+  "schema_version": "0.1",
+  "notes": "Optional. Store only minimal perf/rollback/error-code data. Do not include paths or sensitive markers.",
+  "events": []
+}
+
+

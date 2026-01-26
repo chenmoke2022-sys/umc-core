@@ -1,0 +1,50 @@
+{
+  "schema_version": "0.1",
+  "title": "UMC public results.json (minimal)",
+  "type": "object",
+  "required": ["schema_version", "data_status", "baseline", "device", "metrics"],
+  "properties": {
+    "schema_version": { "type": "string" },
+    "data_status": { "type": "string" },
+    "baseline": {
+      "type": "object",
+      "required": ["name", "version", "quant_profile", "backend"],
+      "properties": {
+        "name": { "type": "string" },
+        "version": { "type": "string" },
+        "quant_profile": { "type": "string" },
+        "backend": { "type": "string" }
+      }
+    },
+    "device": {
+      "type": "object",
+      "required": ["os", "cpu", "ram_gb"],
+      "properties": {
+        "os": { "type": "string" },
+        "cpu": { "type": "string" },
+        "ram_gb": { "type": "string" }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "load_time_ms_p50",
+        "load_time_ms_p95",
+        "peak_memory_mb",
+        "long_run_minutes",
+        "crash_count"
+      ],
+      "properties": {
+        "load_time_ms_p50": { "type": "number" },
+        "load_time_ms_p95": { "type": "number" },
+        "throughput_tokens_per_s_p50": { "type": "number" },
+        "throughput_tokens_per_s_p95": { "type": "number" },
+        "peak_memory_mb": { "type": "number" },
+        "long_run_minutes": { "type": "number" },
+        "crash_count": { "type": "number" }
+      }
+    },
+    "notes": { "type": "string" }
+  }
+}
+

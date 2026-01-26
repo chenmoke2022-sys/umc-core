@@ -1,0 +1,25 @@
+{
+  "schema_version": "0.1",
+  "data_status": "template",
+  "baseline": {
+    "name": "<BASELINE_NAME>",
+    "version": "<VERSION>",
+    "quant_profile": "<Q_PROFILE>",
+    "backend": "<BACKEND>"
+  },
+  "device": {
+    "os": "<OS_NAME>",
+    "cpu": "<CPU_MODEL>",
+    "ram_gb": "<RAM_SIZE>"
+  },
+  "metrics": {
+    "load_time_ms_p50": 0.0,
+    "load_time_ms_p95": 0.0,
+    "throughput_tokens_per_s_p50": 0.0,
+    "throughput_tokens_per_s_p95": 0.0,
+    "peak_memory_mb": 0.0,
+    "long_run_minutes": 0.0,
+    "crash_count": 0
+  },
+  "notes": "Replace values with actual measurements."
+}

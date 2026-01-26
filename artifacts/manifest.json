@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.1",
+  "files": [
+    {
+      "path": "env.json",
+      "size_bytes": 417,
+      "sha256": "c9c5437828c1031ddc56e4bd39715e8ce5bec616afd8e38722efb3c7baa15877"
+    },
+    {
+      "path": "report.md",
+      "size_bytes": 1058,
+      "sha256": "53d1a5b61c38525bc3341a8a85127b547cf3a77d7871c0dd6d4b7ce597f1c62c"
+    },
+    {
+      "path": "results.json",
+      "size_bytes": 694,
+      "sha256": "45341be3c8e3b6ed0a6cb52e04d5c0274f1ba4e1c0acca4eb2d23bf6c4cb309c"
+    }
+  ]
+}
