@@ -7,6 +7,11 @@ _logs/
 dist/
 share_bundle/
 
+# examples (local reproducible outputs; do not commit)
+examples/**/artifacts/
+examples/**/build/
+examples/**/bench.json
+
 # Python
 __pycache__/
 *.pyc
